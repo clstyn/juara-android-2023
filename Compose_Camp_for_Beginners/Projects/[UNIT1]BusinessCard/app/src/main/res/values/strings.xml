@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">BusinessCard</string>
+    <string name="name">Picchan</string>
+    <string name="title">Android Developer Student</string>
+    <string name="phoneNo_text">+62 812 8131 7255</string>
+    <string name="socmed_text">\@picchan</string>
+    <string name="email_text">picchan@gmail.com</string>
+</resources>
