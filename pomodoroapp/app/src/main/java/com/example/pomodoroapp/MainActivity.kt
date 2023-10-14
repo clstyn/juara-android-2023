@@ -174,11 +174,13 @@ fun PomodoroAppBody(context: Context, modifier: Modifier){
                         showNotification(context, "Focus Completed", "Your focus time has completed.")
                         timerState = PomodoroState.FINISH_FOCUS
                         settingsEditable = true
+                        progress = 1f
                     }, context)
                 }
                 PomodoroState.FOCUS, PomodoroState.SHORT_BREAK -> {
                     settingsEditable = true
                     stopTimer(){
+                        progress = 1f
                         timerState = PomodoroState.IDLE
                     }
                 }
@@ -188,12 +190,14 @@ fun PomodoroAppBody(context: Context, modifier: Modifier){
                         progress = it
                     },  {
                         showNotification(context, "Break Completed", "Your break time has completed.")
-                        timerState = PomodoroState.SHORT_BREAK
+                        timerState = PomodoroState.IDLE
                         settingsEditable = true
+                        progress = 1f
                     }, context)
                 }
                 else -> {
                     settingsEditable = true
+                    progress = 1f
                     stopTimer(){
                         timerState = PomodoroState.IDLE
                     }
@@ -275,7 +279,7 @@ private var timerJob: Job? = null
 private fun startTimer(
     totalTimeInMin: Int,
     updateProgressBar: (Float) -> Unit,
-    onTimerFinish: ()-> Unit,
+    onTimerFinish: () -> Unit,
     context: Context
 ) {
 //    stopTimer(onTimerFinish)
